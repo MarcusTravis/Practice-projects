@@ -6,7 +6,7 @@ const password2 = document.getElementById("password2");
 
 // Show input error message
 function showError(input, message) {
-  const formControl = input.parentelement;
+  const formControl = input.parentElement;
   formControl.className = "form-control error";
   const small = formControl.querySelector("small");
   small.innerText = message;
@@ -15,7 +15,7 @@ function showError(input, message) {
 // Show success outline
 function showSuccess(input) {
   const formControl = input.parentElement;
-  formControl.classname = "form-control success";
+  formControl.className = "form-control success";
 }
 
 // Check email is valid
@@ -35,6 +35,8 @@ form.addEventListener("submit", function (e) {
   }
   if (email.value === "") {
     showError(email, "Email is Required");
+  } else if (!isValidEmail(email.value)) {
+    showError(email, "Email is not valid");
   } else {
     showSuccess(email);
   }
